@@ -1,38 +1,60 @@
 ---
 title: "Tutorial"
-output: learnr::tutorial
+output: 
+  learnr::tutorial:
+    progressive: true
 runtime: shiny_prerendered
 ---
 
 ```{r setup, include=FALSE}
 library(learnr)
+library(gradethis)
+gradethis::gradethis_setup()
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
 
-## Topic 1
+## Question 1
 
-### Exercise 
+### Creating a vector {data-progressive=TRUE}
 
-*Here's a simple exercise with an empty code chunk provided for entering the answer.*
+Create an atomic vector named `some_numbers` that contains the following numbers: 6,8,1,13 in that order. 
 
-Write the R code required to add two plus two:
-
-```{r two-plus-two, exercise=TRUE}
+```{r question_1a, exercise=TRUE}
 
 ```
 
-### Exercise with Code
 
-*Here's an exercise with some prepopulated code as well as `exercise.lines = 5` to provide a bit more initial room to work.*
-
-Now write a function that adds any two numbers and then call it:
-
-```{r add-function, exercise=TRUE, exercise.lines = 5}
-add <- function() {
-  
-}
+```{r question_1a-check}
+grade_result(
+  pass_if(~identical(.result, some_numbers<-c(6,8,1,13)))
+)
 ```
+
+### Changing values in a vector 
+
+Change the second element of `some_numbers` to be equal to 88. 
+
+```{r question_1b_setup}
+some_numbers<-c(6,8,1,13)
+```
+
+```{r question1_b, exercise=TRUE,exercise.setup="question_1b_setup"}
+
+```
+
+```{r question1_b-solution}
+#Solution code
+some_numbers[2]<-88
+```
+
+```{r question1_b-check}
+grade_code()
+```
+
+### Changing values in a vector 
+
+
 
 ## Topic 2
 
